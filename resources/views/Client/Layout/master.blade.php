@@ -361,17 +361,18 @@
                         <div class="tab-content" id="tab-content-5">
                             <div class="tab-pane fade show active" id="signin" role="tabpanel"
                                  aria-labelledby="signin-tab">
-                                <form action="#">
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
                                     <div class="form-group">
                                         <label for="singin-email">نام کاربری یا آدرس ایمیل *</label>
-                                        <input type="text" class="form-control" id="singin-email"
-                                               name="singin-email" required>
+                                        <input type="email" class="form-control" id="email"
+                                               name="email" required>
                                     </div><!-- End .form-group -->
 
                                     <div class="form-group">
-                                        <label for="singin-password">رمز عبور *</label>
-                                        <input type="password" class="form-control" id="singin-password"
-                                               name="singin-password" required>
+                                        <label for="password">رمز عبور *</label>
+                                        <input type="password" class="form-control" id="password"
+                                               name="password" required>
                                     </div><!-- End .form-group -->
 
                                     <div class="form-footer">
@@ -390,36 +391,47 @@
                                         <a href="#" class="forgot-link">فراموشی رمز عبور؟</a>
                                     </div><!-- End .form-footer -->
                                 </form>
-                                <div class="form-choice">
-                                    <p class="text-center">یا ورود با</p>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <a href="#" class="btn btn-login btn-g">
-                                                <i class="icon-google"></i>
-                                                حساب گوگل
-                                            </a>
-                                        </div><!-- End .col-6 -->
-                                        <div class="col-sm-6">
-                                            <a href="#" class="btn btn-login btn-f">
-                                                <i class="icon-facebook-f"></i>
-                                                حساب فیسبوک
-                                            </a>
-                                        </div><!-- End .col-6 -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .form-choice -->
+{{--                                <div class="form-choice">--}}
+{{--                                    <p class="text-center">یا ورود با</p>--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-sm-6">--}}
+{{--                                            <a href="#" class="btn btn-login btn-g">--}}
+{{--                                                <i class="icon-google"></i>--}}
+{{--                                                حساب گوگل--}}
+{{--                                            </a>--}}
+{{--                                        </div><!-- End .col-6 -->--}}
+{{--                                        <div class="col-sm-6">--}}
+{{--                                            <a href="#" class="btn btn-login btn-f">--}}
+{{--                                                <i class="icon-facebook-f"></i>--}}
+{{--                                                حساب فیسبوک--}}
+{{--                                            </a>--}}
+{{--                                        </div><!-- End .col-6 -->--}}
+{{--                                    </div><!-- End .row -->--}}
+{{--                                </div><!-- End .form-choice -->--}}
                             </div><!-- .End .tab-pane -->
                             <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                                <form action="#">
+                                <form method="POST" action="{{ route('register') }}">
+                                    @csrf
                                     <div class="form-group">
-                                        <label for="register-email">آدرس ایمیل شما *</label>
-                                        <input type="email" class="form-control" id="register-email"
-                                               name="register-email" required>
+                                        <label for="name">نام شما *</label>
+                                        <input type="text" class="form-control" id="name"
+                                               name="name" required>
+                                    </div><!-- End .form-group -->
+                                    <div class="form-group">
+                                        <label for="email">آدرس ایمیل شما *</label>
+                                        <input type="email" class="form-control" id="email"
+                                               name="email" required>
                                     </div><!-- End .form-group -->
 
                                     <div class="form-group">
-                                        <label for="register-password">رمز عبور *</label>
-                                        <input type="password" class="form-control" id="register-password"
-                                               name="register-password" required>
+                                        <label for="password">رمز عبور *</label>
+                                        <input type="password" class="form-control" id="password"
+                                               name="password" required>
+                                    </div><!-- End .form-group -->
+                                    <div class="form-group">
+                                        <label for="password_confirmation">تکرار رمز عبور *</label>
+                                        <input type="password" class="form-control" id="password_confirmation"
+                                               name="password_confirmationap" required>
                                     </div><!-- End .form-group -->
 
                                     <div class="form-footer">
@@ -436,23 +448,23 @@
                                         </div><!-- End .custom-checkbox -->
                                     </div><!-- End .form-footer -->
                                 </form>
-                                <div class="form-choice">
-                                    <p class="text-center">یا عضویت با</p>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <a href="#" class="btn btn-login btn-g">
-                                                <i class="icon-google"></i>
-                                                حساب گوگل
-                                            </a>
-                                        </div><!-- End .col-6 -->
-                                        <div class="col-sm-6">
-                                            <a href="#" class="btn btn-login  btn-f">
-                                                <i class="icon-facebook-f"></i>
-                                                حساب فیسبوک
-                                            </a>
-                                        </div><!-- End .col-6 -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .form-choice -->
+{{--                                <div class="form-choice">--}}
+{{--                                    <p class="text-center">یا عضویت با</p>--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-sm-6">--}}
+{{--                                            <a href="#" class="btn btn-login btn-g">--}}
+{{--                                                <i class="icon-google"></i>--}}
+{{--                                                حساب گوگل--}}
+{{--                                            </a>--}}
+{{--                                        </div><!-- End .col-6 -->--}}
+{{--                                        <div class="col-sm-6">--}}
+{{--                                            <a href="#" class="btn btn-login  btn-f">--}}
+{{--                                                <i class="icon-facebook-f"></i>--}}
+{{--                                                حساب فیسبوک--}}
+{{--                                            </a>--}}
+{{--                                        </div><!-- End .col-6 -->--}}
+{{--                                    </div><!-- End .row -->--}}
+{{--                                </div><!-- End .form-choice -->--}}
                             </div><!-- .End .tab-pane -->
                         </div><!-- End .tab-content -->
                     </div><!-- End .form-tab -->
