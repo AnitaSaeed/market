@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Client.homepage');
-});
+Route::get('/',[\App\Http\Controllers\HomeController::class,'homepage'] );
 //
 //Route::get('/dashboard/{id}', function ($id) {
 //    $user = \App\Models\User::find($id);
