@@ -12,13 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/',[\App\Http\Controllers\HomeController::class,'homepage'] );
-//
-//Route::get('/dashboard/{id}', function ($id) {
-//    $user = \App\Models\User::find($id);
-//    return view('Client.profile' ,compact('user'));
-//})->middleware(['auth'])->name('dashboard');
+Route::get('/admin/dashboard',function (){
+    return view('Admin.dashboard');
+});
+//Route::get('/admin/store/product',function (){
+//    return view('Admin.product.store');
+//});
 
 Route::get('/dashboard', function () {
 
@@ -26,3 +25,14 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+Route::get('/',[\App\Http\Controllers\HomeController::class,'homepage'] );
+Route::resource('admin/products', \App\Http\Controllers\Admin\ProductController::class);
+
+
+//
+//Route::get('/dashboard/{id}', function ($id) {
+//    $user = \App\Models\User::find($id);
+//    return view('Client.profile' ,compact('user'));
+//})->middleware(['auth'])->name('dashboard');
+
+
