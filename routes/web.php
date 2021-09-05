@@ -31,6 +31,7 @@ Route::resource('admin/users', \App\Http\Controllers\Admin\UserController::class
 
 Route::get('/front/product/{id}',[\App\Http\Controllers\Client\ProductController::class,'singleProduct']);
 
+Route::post('/product/deleteImage/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteImage']);
 
 //
 //Route::get('/dashboard/{id}', function ($id) {

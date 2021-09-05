@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -46,13 +47,11 @@ class ProductController extends Controller
             ]);
              $product=Product::create($data);
              $id= $product->id;
-//                dd($request->file('images'));
+
              foreach ($request->file('images') as $img){
 
-//                 $path=$img->move(base_path('\img'), $img->getClientOriginalName());
-//                 dd($path);
+
                  $path = $img->move('img');
-//                 $fixed_path = '/storage/'.$path;
                  Image::create([
                      'product_id'=>$id,
                      'image'=>$path
@@ -87,7 +86,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product= Product::find($id);
-        return view('Admin.product.update',compact('product'));
+        $images= Image::where('product_id',$id)->get();
+        return view('Admin.product.update',compact('product','images'));
     }
 
     /**
@@ -99,6 +99,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+//        dd($request->toArray());
         $product=Product::find($id);
         $data=$request->validate([
             'title'=>'required',
@@ -111,6 +112,20 @@ class ProductController extends Controller
             'description'=>$data['description'],
             'price'=>$data['price']
         ]);
+//        dd($request->file('images'));
+        if ($request->file('images')  != null){
+
+            foreach ($request->file('images') as $img){
+
+
+                $path = $img->move('img');
+                Image::create([
+                    'product_id'=>$id,
+                    'image'=>$path
+                ]);
+            }
+        }
+
 
         return  redirect('/admin/products');
     }
@@ -125,5 +140,15 @@ class ProductController extends Controller
     {
         Product::find($id)->delete();
         return redirect('/admin/products');
+    }
+
+    public function deleteImage($id){
+        //ToDO : fix first image bug
+//dd('hi');
+        $image=Image::find($id);
+        $product_id=$image->product_id;
+        $image->delete();
+       return redirect('/admin/products/'.$product_id.'/edit');
+
     }
 }
