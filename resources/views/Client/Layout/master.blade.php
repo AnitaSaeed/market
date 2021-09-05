@@ -417,6 +417,7 @@
                                         <input type="text" class="form-control" id="name"
                                                name="name" required>
                                     </div><!-- End .form-group -->
+                                    @error('name')<span class="error-title">{{$message}}</span>@enderror
                                     <div class="form-group">
                                         <label for="email">آدرس ایمیل شما *</label>
                                         <input type="email" class="form-control" id="email"

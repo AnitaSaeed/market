@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -37,13 +38,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-            $date=$request->validate([
+            $data=$request->validate([
                 'title'=>'required',
                 'description'=>'required|min:3|max:1000',
-                'price'=>'required'
+                'price'=>'required',
 
             ]);
-             Product::create($date);
+             $product=Product::create($data);
+             $id= $product->id;
+//                dd($request->file('images'));
+             foreach ($request->file('images') as $img){
+
+//                 $path=$img->move(base_path('\img'), $img->getClientOriginalName());
+//                 dd($path);
+                 $path = $img->move('img');
+//                 $fixed_path = '/storage/'.$path;
+                 Image::create([
+                     'product_id'=>$id,
+                     'image'=>$path
+                 ]);
+             }
+
+//             Image::where('product_id',$id)->create($data['images']);
+
 
        return  redirect('/admin/products');
 

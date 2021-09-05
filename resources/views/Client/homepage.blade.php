@@ -240,11 +240,19 @@
                         @foreach($products as $product)
                         <div class="product product-11 text-center">
                             <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="/client/images/demos/demo-2/products/product-1-1.jpg" alt="تصویر محصول"
+                                <a href="/front/product/{{$product->id}}">
+                                    @if(isset($product->images()->first()->id))
+                                    <img style="height: 270px" src="{{url($product->images()->first()->image)}}" alt="تصویر محصول"
                                          class="product-image">
-                                    <img src="/client/images/demos/demo-2/products/product-1-2.jpg" alt="تصویر محصول"
+                                    @endif
+                                    @php
+                                    $img= $product->images()->get();
+
+                                    @endphp
+                                    @if(isset($img[1]->id))
+                                    <img style="height: 270px" src="{{url($img[1]->image)}}" alt="تصویر محصول"
                                          class="product-image-hover">
+                                    @endif
                                 </a>
 
                                 <div class="product-action-vertical">
@@ -254,12 +262,12 @@
                             </figure><!-- End .product-media -->
 
                             <div class="product-body">
-                                <h3 class="product-title text-center"><a href="product.html">{{$product->titlep}}
+                                <h3 class="product-title text-center"><a href="/front/product/{{$product->id}}">{{$product->title}}
                                     </a>
                                 </h3>
                                 <!-- End .product-title -->
                                 <div class="product-price">
-                                    251,000 تومان
+                                    {{$product->price}} تومان
                                 </div><!-- End .product-price -->
                             </div><!-- End .product-body -->
                             <div class="product-action">

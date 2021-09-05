@@ -49,11 +49,10 @@
                         <aside class="col-md-4 col-lg-3">
                             <ul class="nav nav-dashboard flex-column mb-3 mb-md-0" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/admin/products">محصولات</a>
+                                    <a class="nav-link {{ Request::is('admin/products') ? 'active' : '' }}" href="/admin/products">محصولات</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="tab-orders-link" data-toggle="tab" href="#tab-orders"
-                                       role="tab" aria-controls="tab-orders" aria-selected="false">سفارشات</a>
+                                    <a class="nav-link {{ Request::is('admin/users') ? 'active' : '' }}" href="/admin/users">کاربران</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="tab-downloads-link" data-toggle="tab"

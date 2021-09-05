@@ -27,6 +27,9 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 Route::get('/',[\App\Http\Controllers\HomeController::class,'homepage'] );
 Route::resource('admin/products', \App\Http\Controllers\Admin\ProductController::class);
+Route::resource('admin/users', \App\Http\Controllers\Admin\UserController::class);
+
+Route::get('/front/product/{id}',[\App\Http\Controllers\Client\ProductController::class,'singleProduct']);
 
 
 //

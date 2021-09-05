@@ -1,7 +1,7 @@
 @extends('Admin.dashboard')
 @section('content')
     ثبت محصول
-<form method="post" style="padding: 20px;background-color: #f0f0f0" action="/admin/products">
+<form method="post" style="padding: 20px;background-color: #f0f0f0" action="/admin/products" enctype="multipart/form-data">
 
     @csrf
     <div style="padding: 20px">
@@ -27,7 +27,7 @@
  <div class="row">
         <div class="col-md-12">
             <label>تصاویر : </label>
-                <input class="form-control" type="file" >
+                <input class="form-control" name="images[]" type="file" multiple>
         </div>
 
     </div>
