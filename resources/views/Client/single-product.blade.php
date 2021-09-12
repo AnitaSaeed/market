@@ -87,7 +87,7 @@
                             </div><!-- End .details-filter-row -->
                             @auth()
                             <div class="product-details-action">
-                                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
+                                <a href="/cart/{{$product->id}}" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
 
 
                             </div><!-- End .product-details-action -->

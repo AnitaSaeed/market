@@ -255,10 +255,7 @@
                                     @endif
                                 </a>
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist"><span>افزودن به
-                                                لیست علاقه مندی</span></a>
-                                </div><!-- End .product-action-vertical -->
+
                             </figure><!-- End .product-media -->
 
                             <div class="product-body">
@@ -271,7 +268,8 @@
                                 </div><!-- End .product-price -->
                             </div><!-- End .product-body -->
                             <div class="product-action">
-                                <a href="#" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
+
+                                <a href="/cart/{{$product->id}}" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
                             </div><!-- End .product-action -->
                         </div><!-- End .product -->
                         @endforeach
