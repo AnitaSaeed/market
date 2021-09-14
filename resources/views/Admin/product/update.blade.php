@@ -25,6 +25,17 @@
 
             </div>
             <div class="row">
+
+                <div class="col-md-6">
+                    <label>محصول شگفت انگیز باشد : </label>
+                    <input class="form-check-input" type="checkbox" name="amazing" value="{{$product->amazing}}">
+                </div>
+                <div class="col-md-6">
+                    <label>محصول پیشنهادی باشد : </label>
+                    <input class="form-check-input" type="checkbox" name="offer" value="{{$product->offer}}">
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-12">
                     <label>تصاویر : </label>
                     <div class="float-right">

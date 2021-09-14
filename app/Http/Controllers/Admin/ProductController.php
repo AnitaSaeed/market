@@ -43,8 +43,11 @@ class ProductController extends Controller
                 'title'=>'required',
                 'description'=>'required|min:3|max:1000',
                 'price'=>'required',
+                'amazing'=>'boolean|nullable',
+                'offer'=>'boolean|nullable'
 
             ]);
+
              $product=Product::create($data);
              $id= $product->id;
 
@@ -99,18 +102,25 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        dd($request->toArray());
         $product=Product::find($id);
         $data=$request->validate([
             'title'=>'required',
             'description'=>'required|min:3|max:1000',
-            'price'=>'required'
+            'price'=>'required',
+            'amazing'=>'boolean|nullable',
+            'offer'=>'boolean|nullable'
+
 
         ]);
+
         $product->Update([
             'title'=>$data['title'],
             'description'=>$data['description'],
-            'price'=>$data['price']
+            'price'=>$data['price'],
+            'amazing'=>isset($data['amazing'])? $data['amazing']:0,
+            'offer'=>isset($data['offer'])? $data['offer']:0
+//        'amazing'=>$data['amazing'],
+//            'offer'=>$data['offer']
         ]);
 //        dd($request->file('images'));
         if ($request->file('images')  != null){

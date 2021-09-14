@@ -11,7 +11,9 @@ class Product extends Model
     protected $fillable = [
         'title',
         'description',
-        'price'
+        'price',
+        'amazing',
+        'offer'
     ];
 
     public function category(){

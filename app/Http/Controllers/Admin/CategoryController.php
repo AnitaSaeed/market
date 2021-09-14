@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-         $users= User::where('type','user')->get();
-        return view('Admin.user.index',compact('users'));
+        $categories= Category::all();
+        return view('Admin.category.index',compact('categories'));
     }
 
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.category.store');
     }
 
     /**
@@ -37,7 +37,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        dd($request->image);
+        $data=$request->validate([
+            'title'=>'required',
+            'active'=>'boolean|nullable',
+            'image'=>'nullable'
+
+        ]);
+        $image=$request->file('image')->move('img');
+        $data['image']=$image;
+        Category::create($data);
+        return  redirect('/admin/categories');
     }
 
     /**
@@ -82,6 +92,15 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category= Category::find($id);
+        if ($category->active==1){
+            $category->update(['active'=>0]);
+        }
+        else{
+            $category->update(['active'=>1]);
+        }
+
+        return redirect()->back();
+
     }
 }

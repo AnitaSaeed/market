@@ -28,8 +28,8 @@
                                 <tr>
                                     <th>محصول</th>
                                     <th>قیمت</th>
-                                    <th>تعداد</th>
-                                    <th>مجموع</th>
+
+
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -55,13 +55,7 @@
                                         </div><!-- End .product -->
                                     </td>
                                     <td class="price-col">{{$product->price}}</td>
-                                    <td class="quantity-col">
-                                        <div class="cart-product-quantity">
-                                            <input type="number" class="form-control" value="1" min="1" max="10"
-                                                   step="1" data-decimals="0" required>
-                                        </div><!-- End .cart-product-quantity -->
-                                    </td>
-                                    <td class="total-col">84,000</td>
+
                                     <td class="remove-col"><button class="btn-remove"><i
                                                 class="icon-close"></i></button></td>
                                 </tr>

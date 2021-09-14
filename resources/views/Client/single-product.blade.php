@@ -18,9 +18,7 @@
                                          data-zoom-image="assets/images/products/single/1-big.jpg"
                                          alt="تصویر محصول">
                                     @endif
-{{--                                    <a href="#" id="btn-product-gallery" class="btn-product-gallery">--}}
-{{--                                        <i class="icon-arrows"></i>--}}
-{{--                                    </a>--}}
+
                                 </figure><!-- End .product-main-image -->
 
                                 <div id="product-zoom-gallery" class="product-image-gallery">
@@ -34,25 +32,7 @@
                                     @endforeach
                                     @endif
 
-{{--                                    <a class="product-gallery-item" href="#"--}}
-{{--                                       data-image="assets/images/products/single/2.jpg"--}}
-{{--                                       data-zoom-image="assets/images/products/single/2-big.jpg">--}}
-{{--                                        <img src="assets/images/products/single/2-small.jpg"--}}
-{{--                                             alt="توضیحات تصویر">--}}
-{{--                                    </a>--}}
 
-{{--                                    <a class="product-gallery-item" href="#"--}}
-{{--                                       data-image="assets/images/products/single/3.jpg"--}}
-{{--                                       data-zoom-image="assets/images/products/single/3-big.jpg">--}}
-{{--                                        <img src="assets/images/products/single/3-small.jpg"--}}
-{{--                                             alt="توضیحات تصویر">--}}
-{{--                                    </a>--}}
-
-{{--                                    <a class="product-gallery-item" href="#"--}}
-{{--                                       data-image="assets/images/products/single/4.jpg"--}}
-{{--                                       data-zoom-image="assets/images/products/single/4-big.jpg">--}}
-{{--                                        <img src="assets/images/products/single/4-small.jpg" alt="product back">--}}
-{{--                                    </a>--}}
                                 </div><!-- End .product-image-gallery -->
                             </div><!-- End .row -->
                         </div><!-- End .product-gallery -->
@@ -78,23 +58,14 @@
 
 
 
-                            <div class="details-filter-row details-row-size">
-                                <label for="qty">تعداد : </label>
-                                <div class="product-details-quantity">
-                                    <input type="number" id="qty" class="form-control" value="1" min="1"
-                                           max="10" step="1" data-decimals="0" required>
-                                </div><!-- End .product-details-quantity -->
-                            </div><!-- End .details-filter-row -->
-                            @auth()
+
                             <div class="product-details-action">
                                 <a href="/cart/{{$product->id}}" class="btn-product btn-cart"><span>افزودن به سبد خرید</span></a>
 
 
                             </div><!-- End .product-details-action -->
-                            @endauth
-                            @guest()
-                                <a href="#">برای افزودن محصول به سبد خرید ابتدا وارد شوید</a>
-                            @endguest
+
+
                             <div class="product-details-footer">
                                 <div class="product-cat text-center">
                                     <span>دسته بندی : </span>

@@ -28,6 +28,7 @@ require __DIR__.'/auth.php';
 Route::get('/',[\App\Http\Controllers\HomeController::class,'homepage'] )->name('home');
 Route::resource('admin/products', \App\Http\Controllers\Admin\ProductController::class);
 Route::resource('admin/users', \App\Http\Controllers\Admin\UserController::class);
+Route::resource('admin/categories', \App\Http\Controllers\Admin\CategoryController::class);
 
 Route::get('/front/product/{id}',[\App\Http\Controllers\Client\ProductController::class,'singleProduct']);
 
@@ -36,7 +37,12 @@ Route::get('/cart/{id}',[\App\Http\Controllers\Client\CartController::class,'add
 Route::get('/cart-list',[\App\Http\Controllers\Client\CartController::class,'index']);
 Route::get('/order',[\App\Http\Controllers\Client\CartController::class,'createOrder']);
 
-//
+Route::get('/category/{id}',[\App\Http\Controllers\Client\CategoryController::class,'index']);
+
+//Route::get('/admin/login',function (){
+//    return view('Admin.login');
+//})->middleware(['admin']);
+////
 //Route::get('/dashboard/{id}', function ($id) {
 //    $user = \App\Models\User::find($id);
 //    return view('Client.profile' ,compact('user'));

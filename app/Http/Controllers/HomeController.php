@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function homepage(){
-        $products = Product::where('active', 1)->get();
-        return view('Client.homepage', compact('products'));
+        $amazingProducts = Product::where([['active', 1],['amazing',1]])->get();
+        $newProducts=Product::orderBy('created_at','DESC')->get();
+        $offerProducts=Product::where([['active', 1],['offer',1]])->get();
+        return view('Client.homepage', compact('amazingProducts','newProducts','offerProducts'));
     }
 }
