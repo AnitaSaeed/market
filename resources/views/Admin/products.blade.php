@@ -30,11 +30,11 @@
 
                 <td style="color: white">
 
-                    <a class="btn " style="background-color: #968f6b !important;" href="/admin/products/{{$product->id}}/edit">ویرایش</a>
+                    <a class="btn " style="background-color: #968f6b !important;margin: 5px" href="/admin/products/{{$product->id}}/edit">ویرایش</a>
                     <form method="post" action="/admin/products/{{$product->id}}">
                         @csrf
                         <input name="_method" type="hidden" value="DELETE">
-                        <button type="submit" class="btn " style="color: white;background-color: #707070 !important;" onclick="return confirm('از حذف این محصول مطمئن هستید؟')">حذف</button>
+                        <button type="submit" class="btn " style="color: white;background-color: #707070 !important;margin: 5px" onclick="return confirm('از حذف این محصول مطمئن هستید؟')">حذف</button>
                     </form>
                 </td>
             </tr>

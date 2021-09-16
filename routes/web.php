@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/admin/dashboard',function (){
     return view('Admin.dashboard');
-});
+})->middleware('admin','auth');
 //Route::get('/admin/store/product',function (){
 //    return view('Admin.product.store');
 //});
@@ -23,12 +23,15 @@ Route::get('/dashboard', function () {
 
     return view('Client.profile');
 })->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard/orders',[\App\Http\Controllers\Client\OrderController::class,'index']);
+Route::post('/dashboard/orders/detail/{id}',[\App\Http\Controllers\Client\OrderController::class,'showDetail']);
 
 require __DIR__.'/auth.php';
 Route::get('/',[\App\Http\Controllers\HomeController::class,'homepage'] )->name('home');
 Route::resource('admin/products', \App\Http\Controllers\Admin\ProductController::class);
 Route::resource('admin/users', \App\Http\Controllers\Admin\UserController::class);
 Route::resource('admin/categories', \App\Http\Controllers\Admin\CategoryController::class);
+Route::resource('admin/orders', \App\Http\Controllers\Admin\OrderController::class);
 
 Route::get('/front/product/{id}',[\App\Http\Controllers\Client\ProductController::class,'singleProduct']);
 

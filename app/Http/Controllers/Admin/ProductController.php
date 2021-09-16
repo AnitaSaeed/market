@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\CategoryProduct;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -28,7 +30,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('Admin.product.store');
+        $categiries= Category::all();
+        return view('Admin.product.store', compact('categiries'));
     }
 
     /**
@@ -39,17 +42,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-            $data=$request->validate([
-                'title'=>'required',
+        $data=$request->validate([
+                'title'=>'required|string',
                 'description'=>'required|min:3|max:1000',
-                'price'=>'required',
+                'price'=>'required|integer',
                 'amazing'=>'boolean|nullable',
-                'offer'=>'boolean|nullable'
+                'offer'=>'boolean|nullable',
+                'categories'=>'exists:categories,id'
 
             ]);
 
-             $product=Product::create($data);
+        $product=Product::create($data);
              $id= $product->id;
+             $categories=$data['categories'];
+             if($data['categories']!=null){
+                 foreach ($categories as $category){
+
+                     CategoryProduct::create([
+                         'product_id'=>$id,
+                         'category_id' =>$category
+                     ]);
+
+                 }
+             }
 
              foreach ($request->file('images') as $img){
 
@@ -60,6 +75,7 @@ class ProductController extends Controller
                      'image'=>$path
                  ]);
              }
+
 
 //             Image::where('product_id',$id)->create($data['images']);
 
@@ -90,7 +106,8 @@ class ProductController extends Controller
     {
         $product= Product::find($id);
         $images= Image::where('product_id',$id)->get();
-        return view('Admin.product.update',compact('product','images'));
+        $categories=Category::all();
+        return view('Admin.product.update',compact('product','images','categories'));
     }
 
     /**
@@ -108,7 +125,8 @@ class ProductController extends Controller
             'description'=>'required|min:3|max:1000',
             'price'=>'required',
             'amazing'=>'boolean|nullable',
-            'offer'=>'boolean|nullable'
+            'offer'=>'boolean|nullable',
+            'category_id'=>'nullable|exists:categories,id'
 
 
         ]);
@@ -119,10 +137,11 @@ class ProductController extends Controller
             'price'=>$data['price'],
             'amazing'=>isset($data['amazing'])? $data['amazing']:0,
             'offer'=>isset($data['offer'])? $data['offer']:0
-//        'amazing'=>$data['amazing'],
-//            'offer'=>$data['offer']
         ]);
-//        dd($request->file('images'));
+        if ($data['category_id']!=null){
+
+        }
+
         if ($request->file('images')  != null){
 
             foreach ($request->file('images') as $img){

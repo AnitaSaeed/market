@@ -3,11 +3,7 @@
 @section('content')
 
     <main class="main">
-        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
-            <div class="container">
-                <h1 class="page-title">سبد خرید<span>فروشگاه</span></h1>
-            </div><!-- End .container -->
-        </div><!-- End .page-header -->
+
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <div class="container">
                 <ol class="breadcrumb">
@@ -35,6 +31,7 @@
                                 </thead>
 
                                 <tbody>
+
                                 @php($total=0)
                                 @foreach($cart as $cart)
                                     @php( $product= \App\Models\Product::where('id',$cart)->first())
@@ -76,16 +73,10 @@
 
                                 <table class="table table-summary">
                                     <tbody>
-                                    <tr class="summary-subtotal">
-                                        <td>جمع کل سبد خرید : </td>
-                                        <td class="text-left">{{$total}} تومان</td>
-                                    </tr><!-- End .summary-subtotal -->
 
 
-                                    <tr class="summary-shipping-estimate">
-                                        <td>آدرس<br> <a href="dashboard.html">تغییر آدرس</a></td>
-                                        <td>&nbsp;</td>
-                                    </tr><!-- End .summary-shipping-estimate -->
+
+
 
                                     <tr class="summary-total">
                                         <td>مبلغ قابل پرداخت :</td>
@@ -93,9 +84,12 @@
                                     </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
-
-                                <a href="/order" class="btn btn-outline-primary-2 btn-order btn-block">رفتن
-                                    به صفحه پرداخت</a>
+                                @auth()
+                                <a href="/order" class="btn btn-outline-primary-2 btn-order btn-block">ثبت سفارش</a>
+                                @endauth
+                                @guest()
+                                    <p>برای ثبت سفارش ابتدا وارد شوید</p>
+                                @endguest
                             </div><!-- End .summary -->
 
                             <a href="{{route('home')}}" class="btn btn-outline-dark-2 btn-block mb-3"><span>ادامه

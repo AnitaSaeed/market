@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use mysql_xdevapi\Exception;
 
 class CartController extends Controller
@@ -65,6 +66,7 @@ class CartController extends Controller
             ]);
         }
         session(['cart'=>[]]);
+        return Redirect::to('/dashboard')->withSuccess('شفارش شما با موفقیت ثبت شد. منتظر تایید ادمین باشید.');
 
     }
 

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories= Category::all();
-        return view('Admin.category.index',compact('categories'));
+       $orders= Order::all();
+        return view('Admin.order.index',compact('orders'));
+
     }
 
     /**
@@ -26,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('Admin.category.store');
+        //
     }
 
     /**
@@ -37,22 +38,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->image);
-        $data=$request->validate([
-            'title'=>'required',
-            'active'=>'boolean|nullable',
-            'image'=>'nullable'
-
-        ]);
-        if (!empty($request->file())){
-            $image=$request->file('image')->move('img');
-            $data['image']=$image;
-        }
-        if ($data['active']==null){
-            $data['active']=1;
-        }
-        Category::create($data);
-        return  redirect('/admin/categories');
+        //
     }
 
     /**
@@ -97,15 +83,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category= Category::find($id);
-        if ($category->active==1){
-            $category->update(['active'=>0]);
-        }
-        else{
-            $category->update(['active'=>1]);
-        }
-
-        return redirect()->back();
-
+        //
     }
 }

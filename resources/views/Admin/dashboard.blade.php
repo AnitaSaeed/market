@@ -59,16 +59,14 @@
                                     <a class="nav-link {{ Request::is('admin/categories') ? 'active' : '' }}" href="/admin/categories" >دسته بندی ها</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="tab-address-link" data-toggle="tab" href="#tab-address"
-                                       role="tab" aria-controls="tab-address" aria-selected="false">آدرس</a>
+                                    <a class="nav-link {{ Request::is('admin/orders') ? 'active' : '' }}" href="/admin/orders" >سفارشات</a>
                                 </li>
+
                                 <li class="nav-item">
-                                    <a class="nav-link" id="tab-account-link" data-toggle="tab" href="#tab-account"
-                                       role="tab" aria-controls="tab-account" aria-selected="false">جزئیات حساب
-                                        کاربری</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">خروج از حساب کاربری</a>
+                                    <form method="post" action="/logout">
+                                        @csrf
+                                        <button class="nav-link" style="background-color: white;border: none">خروج از حساب کاربری</button>
+                                    </form>
                                 </li>
                             </ul>
                         </aside><!-- End .col-lg-3 -->
@@ -76,87 +74,7 @@
                         <div class="col-md-8 col-lg-9">
                             <div class="tab-content" style="text-align: right">
                                 @yield('content')
-{{--                                <div class="tab-pane fade show active" id="tab-dashboard" role="tabpanel"--}}
-{{--                                     aria-labelledby="tab-dashboard-link">--}}
-{{--                                  --}}
-{{--                                </div><!-- .End .tab-pane -->--}}
 
-{{--                                <div class="tab-pane fade" id="tab-orders" role="tabpanel"--}}
-{{--                                     aria-labelledby="tab-orders-link">--}}
-{{--                                    <p>سفارش جدیدی وجود ندارد</p>--}}
-{{--                                    <a href="category.html" class="btn btn-outline-primary-2"><span>رفتن به--}}
-{{--                                                فروشگاه</span><i class="icon-long-arrow-left"></i></a>--}}
-{{--                                </div><!-- .End .tab-pane -->--}}
-
-{{--                                <div class="tab-pane fade" id="tab-downloads" role="tabpanel"--}}
-{{--                                     aria-labelledby="tab-downloads-link">--}}
-{{--                                    <p>دانلود جدیدی وجود ندارد</p>--}}
-{{--                                    <a href="category.html" class="btn btn-outline-primary-2"><span>رفتن به--}}
-{{--                                                فروشگاه</span><i class="icon-long-arrow-left"></i></a>--}}
-{{--                                </div><!-- .End .tab-pane -->--}}
-
-{{--                                <div class="tab-pane fade" id="tab-address" role="tabpanel"--}}
-{{--                                     aria-labelledby="tab-address-link">--}}
-{{--                                    <p>آدرسی که اینجا ثبت می کنید به صورت پیش فرض برای ارسال محصولات به شما استفاده--}}
-{{--                                        می شود.</p>--}}
-
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-lg-12">--}}
-{{--                                            <div class="card card-dashboard">--}}
-{{--                                                <div class="card-body">--}}
-{{--                                                    <h3 class="card-title">آدرس شما</h3><!-- End .card-title -->--}}
-
-{{--                                                    <p>نام کاربری شما<br>--}}
-{{--                                                        نام شرکت شما<br>--}}
-{{--                                                        محمد محمدی<br>--}}
-{{--                                                        تهران-تهران<br>--}}
-{{--                                                        خیابان آزادی - پلاک 7<br>--}}
-{{--                                                        yourmail@mail.com<br>--}}
-{{--                                                        <a href="#">ویرایش <i class="icon-edit"></i></a></p>--}}
-{{--                                                </div><!-- End .card-body -->--}}
-{{--                                            </div><!-- End .card-dashboard -->--}}
-{{--                                        </div><!-- End .col-lg-12 -->--}}
-{{--                                    </div><!-- End .row -->--}}
-{{--                                </div><!-- .End .tab-pane -->--}}
-
-{{--                                <div class="tab-pane fade" id="tab-account" role="tabpanel"--}}
-{{--                                     aria-labelledby="tab-account-link">--}}
-{{--                                    <form action="#">--}}
-{{--                                        <div class="row">--}}
-{{--                                            <div class="col-sm-6">--}}
-{{--                                                <label>نام *</label>--}}
-{{--                                                <input type="text" class="form-control" required>--}}
-{{--                                            </div><!-- End .col-sm-6 -->--}}
-
-{{--                                            <div class="col-sm-6">--}}
-{{--                                                <label>نام خانوادگی *</label>--}}
-{{--                                                <input type="text" class="form-control" required>--}}
-{{--                                            </div><!-- End .col-sm-6 -->--}}
-{{--                                        </div><!-- End .row -->--}}
-
-{{--                                        <label>نام نمایش *</label>--}}
-{{--                                        <input type="text" class="form-control" required>--}}
-{{--                                        <small class="form-text">این نام در قسمت بازدیدها، نظرات و حساب کاربری شما--}}
-{{--                                            نمایش داده می شود.</small>--}}
-
-{{--                                        <label>ایمیل *</label>--}}
-{{--                                        <input type="email" class="form-control" required>--}}
-
-{{--                                        <label>پسورد فعلی</label>--}}
-{{--                                        <input type="password" class="form-control">--}}
-
-{{--                                        <label>پسورد جدید</label>--}}
-{{--                                        <input type="password" class="form-control">--}}
-
-{{--                                        <label>تکرار پسورد جدید</label>--}}
-{{--                                        <input type="password" class="form-control mb-2">--}}
-
-{{--                                        <button type="submit" class="btn btn-outline-primary-2 float-right">--}}
-{{--                                            <span>ذخیره تغییرات</span>--}}
-{{--                                            <i class="icon-long-arrow-left"></i>--}}
-{{--                                        </button>--}}
-{{--                                    </form>--}}
-{{--                                </div><!-- .End .tab-pane -->--}}
                             </div>
                         </div><!-- End .col-lg-9 -->
                     </div><!-- End .row -->

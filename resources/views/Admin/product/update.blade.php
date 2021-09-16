@@ -18,6 +18,18 @@
 
             </div>
             <div class="row">
+                <div class="col-md-6">
+                    <label>دسته بندی</label>
+                    <select name="category_id" id="category_id">
+
+                        <option value="">انتخاب کنید</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-12">
                     <label>توضیحات : </label>
                     <textarea class="form-control" name="description">{{$product->description}}</textarea>

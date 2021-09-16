@@ -8,8 +8,9 @@
             <div class="row">
 
                 <div class="col-md-6">
-                    <label>عنوان دسته بندی : </label>
+                    <label>عنوان دسته بندی : </label><span style="color: red">*</span>
                     <input class="form-control" type="text" name="title">
+                    @error('title')<span style="color: red;font-size: small">{{$message}}</span>@enderror
                 </div>
 
             </div>
