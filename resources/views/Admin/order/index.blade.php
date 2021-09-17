@@ -3,6 +3,11 @@
 
 
     <table class="table table-responsive-sm table-striped" style="padding: 20px">
+        @if(\Illuminate\Support\Facades\Session::has('success'))
+            <div class="alert alert-success">
+                {{\Illuminate\Support\Facades\Session::get('success')}}
+            </div>
+        @endif
         <thead>
         <tr class="text-right">
             <th>ردیف</th>
@@ -32,13 +37,27 @@
                     @endif
                 </td>
                 <th>
+
                     @if($order->status==0)
-                      <button type="submit" class="btn " style="margin: 5px; color: white;background-color: #968f6b  !important;" >تایید</button>
-                      <button type="submit" class="btn " style="margin: 5px; color: white;background-color: #707070  !important;" >رد</button>
+                        <form method="post" action="/admin/order/accept/{{$order->id}}">
+                            @csrf
+                            <button type="submit" class="btn " style="margin: 5px; color: white;background-color: #968f6b  !important;" >تایید</button>
+                        </form>
+                        <form method="post" action="/admin/order/deny/{{$order->id}}">
+                            @csrf
+                             <button type="submit" class="btn " style="margin: 5px; color: white;background-color: #707070  !important;" >رد</button>
+                        </form>
                     @elseif($order->status==1)
-                        <button type="submit" class="btn " style="margin: 5px; color: white;background-color: #707070 !important;" >رد</button>
+                        <form method="post" action="/admin/order/deny/{{$order->id}}">
+                            @csrf
+                         <button type="submit" class="btn " style="margin: 5px; color: white;background-color: #707070 !important;" >رد</button>
+                        </form>
+
                     @else
+                        <form method="post" action="/admin/order/accept/{{$order->id}}">
+                            @csrf
                         <button type="submit" class="btn " style="margin: 5px; color: white;background-color: #968f6b  !important;" >تایید</button>
+                        </form>
                     @endif
                 </th>
 

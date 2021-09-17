@@ -17,7 +17,6 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('tracking_code');
             $table->integer('user_id')->unsigned();
-            $table->integer('address_id')->unsigned()->nullable();
             $table->integer('price');
             $table->integer('status')->default('0');
             $table->timestamps();

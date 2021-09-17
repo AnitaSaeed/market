@@ -85,4 +85,16 @@ class OrderController extends Controller
     {
         //
     }
+    public function acceptOrder($id){
+      $order= Order::find($id);
+      $order->Update(['status'=>1]);
+      return redirect()->back()->with('success','سفارش '.$order->tracking_code.' با موفقیت تایید شد');
+
+    }
+    public function denyOrder($id){
+        $order= Order::find($id);
+        $order->Update(['status'=>2]);
+        return redirect()->back()->with('success','سفارش '.$order->tracking_code.' با موفقیت رد شد');
+
+    }
 }

@@ -54,8 +54,8 @@ class ProductController extends Controller
 
         $product=Product::create($data);
              $id= $product->id;
-             $categories=$data['categories'];
-             if($data['categories']!=null){
+            if(isset($data['categories'])){
+                 $categories=$data['categories'];
                  foreach ($categories as $category){
 
                      CategoryProduct::create([
@@ -65,16 +65,18 @@ class ProductController extends Controller
 
                  }
              }
+            if ($request->file('images')!=null){
 
-             foreach ($request->file('images') as $img){
+                foreach ($request->file('images') as $img){
 
 
-                 $path = $img->move('img');
-                 Image::create([
-                     'product_id'=>$id,
-                     'image'=>$path
-                 ]);
-             }
+                    $path = $img->move('img');
+                    Image::create([
+                        'product_id'=>$id,
+                        'image'=>$path
+                    ]);
+                }
+            }
 
 
 //             Image::where('product_id',$id)->create($data['images']);
@@ -146,8 +148,9 @@ class ProductController extends Controller
             'amazing'=>isset($data['amazing'])? $data['amazing']:0,
             'offer'=>isset($data['offer'])? $data['offer']:0
         ]);
-        $categories=$data['categories'];
-        if($data['categories']!=null){
+
+        if(isset($data['categories'])){
+            $categories=$data['categories'];
             foreach ($categories as $category){
 
                 CategoryProduct::create([
@@ -191,7 +194,6 @@ class ProductController extends Controller
     }
 
     public function deleteImage($id){
-        //ToDO : fix first image bug
         $image=Image::find($id);
         $product_id=$image->product_id;
         $image->delete();

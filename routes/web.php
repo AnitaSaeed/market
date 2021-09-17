@@ -33,6 +33,10 @@ Route::resource('admin/users', \App\Http\Controllers\Admin\UserController::class
 Route::resource('admin/categories', \App\Http\Controllers\Admin\CategoryController::class);
 Route::resource('admin/orders', \App\Http\Controllers\Admin\OrderController::class);
 
+Route::post('admin/order/accept/{id}',[\App\Http\Controllers\Admin\OrderController::class,'acceptOrder']);
+Route::post('admin/order/deny/{id}',[\App\Http\Controllers\Admin\OrderController::class,'denyOrder']);
+
+
 Route::get('/front/product/{id}',[\App\Http\Controllers\Client\ProductController::class,'singleProduct']);
 
 Route::post('/product/deleteImage/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteImage']);

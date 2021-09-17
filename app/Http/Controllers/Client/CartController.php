@@ -47,7 +47,6 @@ class CartController extends Controller
             $order=Order::create([
                 'user_id'=>auth()->user()->id,
                 'tracking_code'=>random_int(100000,999999),
-                'address_id'=>'1',
                 'price'=>$price,
 
 
