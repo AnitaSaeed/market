@@ -30,7 +30,7 @@
 
                 <td style="color: white">
 
-                    <a class="btn " style="background-color: #968f6b !important;margin: 5px" href="/admin/products/{{$product->id}}/edit">ویرایش</a>
+                    <a class="btn " style="background-color: #cc9966 !important;margin: 5px" href="/admin/products/{{$product->id}}/edit">ویرایش</a>
                     <form method="post" action="/admin/products/{{$product->id}}">
                         @csrf
                         <input name="_method" type="hidden" value="DELETE">

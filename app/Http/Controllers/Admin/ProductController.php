@@ -107,7 +107,14 @@ class ProductController extends Controller
         $product= Product::find($id);
         $images= Image::where('product_id',$id)->get();
         $categories=Category::all();
-        return view('Admin.product.update',compact('product','images','categories'));
+        $categoryProduct[]=CategoryProduct::where('product_id',$product->id)->get();
+        foreach ($categoryProduct as $item){
+            $categoryProduct_id= $item->pluck('category_id');
+            $oldCategory=Category::find($categoryProduct_id);
+        }
+
+
+        return view('Admin.product.update',compact('product','images','categories','oldCategory'));
     }
 
     /**
@@ -126,10 +133,11 @@ class ProductController extends Controller
             'price'=>'required',
             'amazing'=>'boolean|nullable',
             'offer'=>'boolean|nullable',
-            'category_id'=>'nullable|exists:categories,id'
+            'categories'=>'nullable|exists:categories,id'
 
 
         ]);
+
 
         $product->Update([
             'title'=>$data['title'],
@@ -138,9 +146,20 @@ class ProductController extends Controller
             'amazing'=>isset($data['amazing'])? $data['amazing']:0,
             'offer'=>isset($data['offer'])? $data['offer']:0
         ]);
-        if ($data['category_id']!=null){
+        $categories=$data['categories'];
+        if($data['categories']!=null){
+            foreach ($categories as $category){
 
+                CategoryProduct::create([
+                    'product_id'=>$product->id,
+                    'category_id' =>$category
+                ]);
+
+            }
         }
+//        if ($data['category_id']!=null){
+//
+//        }
 
         if ($request->file('images')  != null){
 
@@ -173,11 +192,16 @@ class ProductController extends Controller
 
     public function deleteImage($id){
         //ToDO : fix first image bug
-//dd('hi');
         $image=Image::find($id);
         $product_id=$image->product_id;
         $image->delete();
        return redirect('/admin/products/'.$product_id.'/edit');
+
+    }
+    public function deleteOldCat($product_id,$category_id){
+
+       $test=CategoryProduct::where([['product_id',$product_id],['category_id',$category_id]])->first()->delete();
+       return redirect()->back();
 
     }
 }

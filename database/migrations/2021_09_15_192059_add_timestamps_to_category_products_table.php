@@ -14,6 +14,7 @@ class AddTimestampsToCategoryProductsTable extends Migration
     public function up()
     {
         Schema::table('category_products', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
 
         });

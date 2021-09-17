@@ -27,18 +27,26 @@
                 </td>
 
                 <td style="color: white">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a class="btn " style="color: white;background-color: #cc9966 !important;" href="/admin/categories/{{$category->id}}/edit">ویرایش</a>
 
-                    <form method="post" action="/admin/categories/{{$category->id}}">
-                        @csrf
-                        <input name="_method" type="hidden" value="DELETE">
-                        @if($category->active)
-                        <button type="submit" class="btn " style="color: white;background-color: red !important;" >غیر فعال کردن</button>
-                        @else
-                        <button type="submit" class="btn " style="color: white;background-color: #4ead4e !important;" >فعال کردن</button>
+                        </div>
+                        <div class="col-md-6">
+                            <form method="post" action="/admin/categories/{{$category->id}}">
+                                @csrf
+                                <input name="_method" type="hidden" value="DELETE">
+                            @if($category->active)
+                                    <button type="submit" class="btn " style="color: white;background-color: #cc8066 !important;" >غیر فعال کردن</button>
+                                @else
+                                    <button type="submit" class="btn " style="color: white;background-color: #99cc66 !important;" >فعال کردن</button>
 
-                        @endif
+                                @endif
 
-                    </form>
+                            </form>
+                        </div>
+                    </div>
+
                 </td>
             </tr>
         @endforeach

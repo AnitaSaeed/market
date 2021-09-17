@@ -19,8 +19,29 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
+
+                    <label>دسته بندی های این محصول:</label><br>
+
+                    @foreach($oldCategory as $item)
+                        <div class="row">
+                            <div class="col-sm-6">
+
+                                <div>{{$item->title}}</div>
+                            </div>
+                            <div class="col-sm-6">
+                                <form method="post" action="/delete/category/{{$product->id}}/{{$item->id}}">
+                                    @csrf
+                                    <button class="btn-remove">
+                                        <i class="icon-close"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col-md-6">
                     <label>دسته بندی</label>
-                    <select name="category_id" id="category_id">
+                    <select name="categories[]" id="categories" multiple>
 
                         <option value="">انتخاب کنید</option>
                         @foreach($categories as $category)
@@ -40,11 +61,11 @@
 
                 <div class="col-md-6">
                     <label>محصول شگفت انگیز باشد : </label>
-                    <input class="form-check-input" type="checkbox" name="amazing" value="{{$product->amazing}}">
+                    <input class="form-check-input" type="checkbox" name="amazing" value="1" @if($product->amazing==1)checked @endif>
                 </div>
                 <div class="col-md-6">
                     <label>محصول پیشنهادی باشد : </label>
-                    <input class="form-check-input" type="checkbox" name="offer" value="{{$product->offer}}">
+                    <input class="form-check-input" type="checkbox" name="offer" value="1" @if($product->offer==1)checked @endif>
                 </div>
             </div>
             <div class="row">

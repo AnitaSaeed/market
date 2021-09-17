@@ -9,7 +9,12 @@
                         <a href="#">لینک ها</a>
                         <ul>
                             <li><a href="tel:#"><i class="icon-phone"></i>تلفن تماس : 02155667788</a></li>
+                            @guest()
                             <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>ورود</a>
+                                @endguest
+                                @auth()
+                                    <a href="/dashboard" style="padding-right: 10px">داشبورد</a>
+                                @endauth
                             </li>
                         </ul>
                     </li>

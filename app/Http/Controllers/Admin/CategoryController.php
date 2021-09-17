@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
@@ -74,7 +75,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category=Category::find($id);
+       return view('Admin.category.edit',compact('category'));
     }
 
     /**
@@ -86,7 +88,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data=$request->validate([
+            'title'=>'required|string',
+            'active'=>'nullable',
+            'image'=>'nullable'
+        ]);
+        if (!empty($request->file())){
+            $image=$request->file('image')->move('img');
+            $data['image']=$image;
+        }
+//        $category=Category::find($id);
+
+        Category::find($id)->Update($data);
+        return Redirect::to('/admin/categories');
     }
 
     /**

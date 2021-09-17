@@ -18,7 +18,7 @@
             <div class="row">
 
                 <div class="col-md-6">
-                    <label>وضعیت محصول : </label>
+                    <label>وضعیت دسته : </label>
                     <select name="active" >
                         <option value="">انتخاب کنید</option>
                         <option value="1">فعال</option>

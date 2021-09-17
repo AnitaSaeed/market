@@ -36,6 +36,7 @@ Route::resource('admin/orders', \App\Http\Controllers\Admin\OrderController::cla
 Route::get('/front/product/{id}',[\App\Http\Controllers\Client\ProductController::class,'singleProduct']);
 
 Route::post('/product/deleteImage/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteImage']);
+Route::post('/delete/category/{product_id}/{category_id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteOldCat']);
 Route::get('/cart/{id}',[\App\Http\Controllers\Client\CartController::class,'addToCart']);
 Route::get('/cart-list',[\App\Http\Controllers\Client\CartController::class,'index']);
 Route::get('/order',[\App\Http\Controllers\Client\CartController::class,'createOrder']);

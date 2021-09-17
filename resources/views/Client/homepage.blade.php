@@ -444,15 +444,4 @@
 
     </main><!-- End .main -->
     @endsection
-@section('script')
-    <!-- Plugins JS File -->
-    <script src="/client/js/jquery.min.js"></script>
-    <script src="/client/js/bootstrap.bundle.min.js"></script>
-    <script src="/client/js/jquery.hoverIntent.min.js"></script>
-    <script src="/client/js/jquery.waypoints.min.js"></script>
-    <script src="/client/js/superfish.min.js"></script>
-    <script src="/client/js/owl.carousel.min.js"></script>
 
-    <!-- Main JS File -->
-    <script src="/client/js/main.js"></script>
-@endsection
