@@ -17,70 +17,73 @@
                                             }
                                         }
                                     }'>
-                                <div class="intro-slide">
+                                @if($categories[0]->id!=null)
+                                     <div class="intro-slide">
                                     <figure class="slide-image">
                                         <picture>
                                             <source media="(max-width: 480px)"
                                                     srcset="assets/images/slider/slide-1-480w.jpg">
-                                            <img src="/client/images/slider/slide-1.jpg" alt="Image Desc">
+                                            <img src="{{$categories[0]['image']!=null ? url($categories[0]['image']) : ''}}" alt="Image Desc">
                                         </picture>
                                     </figure><!-- End .slide-image -->
 
                                     <div class="intro-content">
-                                        <h3 class="intro-subtitle">مجموعه پر فروش</h3>
+
                                         <!-- End .h3 intro-subtitle -->
-                                        <h1 class="intro-title">مبلمان<br>اتاق نشیمن</h1>
+                                        <h1 class="intro-title">{{$categories[0]['id']!=null ? $categories[0]->title: '' }} </h1>
                                         <!-- End .intro-title -->
 
-                                        <a href="category.html" class="btn btn-outline-white">
+                                        <a href="/category/{{$categories[0]['id']}}" class="btn btn-outline-white">
                                             <i class="icon-long-arrow-left"></i>
                                             <span>خرید</span>
                                         </a>
                                     </div><!-- End .intro-content -->
                                 </div><!-- End .intro-slide -->
-
-                                <div class="intro-slide">
+                                @endif
+                                @if($categories[1]->id!=null)
+                                      <div class="intro-slide">
                                     <figure class="slide-image">
                                         <picture>
                                             <source media="(max-width: 480px)"
                                                     srcset="assets/images/slider/slide-2-480w.jpg">
-                                            <img src="/client/images/slider/slide-2.jpg" alt="Image Desc">
+                                            <img src="{{$categories[1]['image']!=null ? url($categories[1]['image']) : ''}}" alt="Image Desc">
                                         </picture>
                                     </figure><!-- End .slide-image -->
 
                                     <div class="intro-content">
-                                        <h3 class="intro-subtitle">اخبار و اطلاعیه</h3>
-                                        <!-- End .h3 intro-subtitle -->
-                                        <h1 class="intro-title">کالاهای جدید</h1><!-- End .intro-title -->
 
-                                        <a href="category.html" class="btn btn-outline-white">
+                                        <!-- End .h3 intro-subtitle -->
+                                        <h1 class="intro-title">{{$categories[1]['id']!=null ? $categories[1]->title: '' }}</h1><!-- End .intro-title -->
+
+                                        <a href="/category/{{$categories[1]['id']}}" class="btn btn-outline-white">
                                             <i class="icon-long-arrow-left"></i>
                                             <span>خرید</span>
                                         </a>
                                     </div><!-- End .intro-content -->
                                 </div><!-- End .intro-slide -->
-
-                                <div class="intro-slide">
+                                @endif
+                                @if($categories[2]->id!=null)
+                                     <div class="intro-slide">
                                     <figure class="slide-image">
                                         <picture>
                                             <source media="(max-width: 480px)"
                                                     srcset="assets/images/slider/slide-3-480w.jpg">
-                                            <img src="/client/images/slider/slide-3.jpg" alt="Image Desc">
+                                            <img src="{{$categories[2]['image']!=null ? url($categories[2]['image']) : ''}}" alt="Image Desc">
                                         </picture>
                                     </figure><!-- End .slide-image -->
 
                                     <div class="intro-content">
-                                        <h3 class="intro-subtitle">مبل بیرون از منزل</h3>
                                         <!-- End .h3 intro-subtitle -->
-                                        <h1 class="intro-title">مبلمان <br>بیرون از منزل</h1>
+                                        <h1 class="intro-title">{{$categories[2]['id']!=null ? $categories[2]->title: '' }}</h1>
                                         <!-- End .intro-title -->
 
-                                        <a href="category.html" class="btn btn-outline-white">
+                                        <a href="/category/{{$categories[2]['id']}}" class="btn btn-outline-white">
                                             <i class="icon-long-arrow-left"></i>
                                             <span>خرید</span>
                                         </a>
                                     </div><!-- End .intro-content -->
                                 </div><!-- End .intro-slide -->
+                                @endif
                             </div><!-- End .intro-slider owl-carousel owl-simple -->
 
                             <span class="slider-loader"></span><!-- End .slider-loader -->
@@ -91,37 +94,37 @@
                             <div class="row row-sm">
                                 <div class="col-md-6 col-lg-12">
                                     <div class="banner banner-display">
-                                        <a href="#">
-                                            <img src="/client/images/banners/home/intro/banner-1.jpg" alt="Banner">
+                                        @if(isset($amazingProducts[0]->images()->first()->id))
+                                        <a href="/front/product/{{$amazingProducts[0]['id']}}">
+                                            <img src="{{url($amazingProducts[0]->images()->first()->image)}}" alt="Banner">
                                         </a>
-
+                                        @endif
                                         <div class="banner-content">
-                                            <h4 class="banner-subtitle text-darkwhite"><a href="#">مبل راحتی</a>
-                                            </h4><!-- End .banner-subtitle -->
-                                            <h3 class="banner-title text-white"><a href="#">صندلی و مبل راحتی <br>تا
-                                                    40% تخفیف</a></h3><!-- End .banner-title -->
-                                            <a href="#" class="btn btn-outline-white banner-link">خرید<i
+
+                                            <h3 class="banner-title text-white"><a href="/front/product/{{$amazingProducts[0]['id']}}">{{$amazingProducts[0]->title}}
+                                                    </a></h3><!-- End .banner-title -->
+                                            <a href="/front/product/{{$amazingProducts[0]['id']}}" class="btn btn-outline-white banner-link">خرید<i
                                                     class="icon-long-arrow-left"></i></a>
                                         </div><!-- End .banner-content -->
                                     </div><!-- End .banner -->
                                 </div><!-- End .col-md-6 col-lg-12 -->
 
-                                <div class="col-md-6 col-lg-12">
-                                    <div class="banner banner-display mb-0">
-                                        <a href="#">
-                                            <img src="/client/images/banners/home/intro/banner-2.jpg" alt="Banner">
-                                        </a>
+{{--                                <div class="col-md-6 col-lg-12">--}}
+{{--                                    <div class="banner banner-display mb-0">--}}
+{{--                                        <a href="#">--}}
+{{--                                            <img src="/client/images/banners/home/intro/banner-2.jpg" alt="Banner">--}}
+{{--                                        </a>--}}
 
-                                        <div class="banner-content">
-                                            <h4 class="banner-subtitle text-darkwhite"><a href="#">جدید در</a></h4>
-                                            <!-- End .banner-subtitle -->
-                                            <h3 class="banner-title text-white"><a href="#">مجمعه بهترین
-                                                    <br>روشنایی ها</a></h3><!-- End .banner-title -->
-                                            <a href="#" class="btn btn-outline-white banner-link">خرید<i
-                                                    class="icon-long-arrow-left"></i></a>
-                                        </div><!-- End .banner-content -->
-                                    </div><!-- End .banner -->
-                                </div><!-- End .col-md-6 col-lg-12 -->
+{{--                                        <div class="banner-content">--}}
+{{--                                            <h4 class="banner-subtitle text-darkwhite"><a href="#">جدید در</a></h4>--}}
+{{--                                            <!-- End .banner-subtitle -->--}}
+{{--                                            <h3 class="banner-title text-white"><a href="#">مجمعه بهترین--}}
+{{--                                                    <br>روشنایی ها</a></h3><!-- End .banner-title -->--}}
+{{--                                            <a href="#" class="btn btn-outline-white banner-link">خرید<i--}}
+{{--                                                    class="icon-long-arrow-left"></i></a>--}}
+{{--                                        </div><!-- End .banner-content -->--}}
+{{--                                    </div><!-- End .banner -->--}}
+{{--                                </div><!-- End .col-md-6 col-lg-12 -->--}}
                             </div><!-- End .row row-sm -->
                         </div><!-- End .intro-banners -->
                     </div><!-- End .col-lg-4 -->

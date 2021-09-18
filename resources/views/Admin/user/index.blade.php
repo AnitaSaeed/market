@@ -1,7 +1,7 @@
 @extends('Admin.dashboard')
 @section('content')
 
-
+    <a class="btn btn-info" style="color: white" href="/admin/users/create ">افزودن کاربر</a>
     <table class="table table-responsive-sm table-striped" style="padding: 20px">
         <thead>
         <tr class="text-right">
