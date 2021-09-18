@@ -22,6 +22,22 @@
 
                     <label>دسته بندی های این محصول:</label><br>
 
+                    @if(isset($oldCategory[0]))
+                    <div class="row" hidden>
+                        <div class="col-sm-6">
+
+                            <div>{{$oldCategory[0]->title}}</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <form method="post" action="/delete/category/{{$product->id}}/{{$oldCategory[0]->id}}">
+                                @csrf
+                                <button class="btn-remove">
+                                    <i class="icon-close"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    @endif
                     @foreach($oldCategory as $item)
                         <div class="row">
                             <div class="col-sm-6">
