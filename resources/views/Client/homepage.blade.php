@@ -17,7 +17,7 @@
                                             }
                                         }
                                     }'>
-                                @if($categories[0]->id!=null)
+                                @if(isset($categories[0]))
                                      <div class="intro-slide">
                                     <figure class="slide-image">
                                         <picture>
@@ -40,7 +40,7 @@
                                     </div><!-- End .intro-content -->
                                 </div><!-- End .intro-slide -->
                                 @endif
-                                @if($categories[1]->id!=null)
+                                @if(isset($categories[1]))
                                       <div class="intro-slide">
                                     <figure class="slide-image">
                                         <picture>
@@ -62,7 +62,7 @@
                                     </div><!-- End .intro-content -->
                                 </div><!-- End .intro-slide -->
                                 @endif
-                                @if($categories[2]->id!=null)
+                                @if(isset($categorise[2]))
                                      <div class="intro-slide">
                                     <figure class="slide-image">
                                         <picture>

@@ -37,7 +37,7 @@
                             </form>
                         </div>
                     </div>
-                    @endif
+                    @endifا
                     @foreach($oldCategory as $item)
                         <div class="row">
                             <div class="col-sm-6">
