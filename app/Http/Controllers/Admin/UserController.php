@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,7 +38,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+//dd($request->toArray());
+            $data=$request->validate([
+                'name'=>'required|string|alpha',
+                'email'=>'required|unique:users,email',
+                'firstname'=>'nullable|string|alpha',
+                'lastname'=>'nullable|string|alpha',
+                'mobile'=>'nullable|regex:/(09)[0-9]{9}/',
+                'gender'=>'nullable'
+            ]);
+            $password=random_int(10000000,99999999);
+
+            $data['password']=Hash::make($password);
+
+            User::create($data);
+            return redirect('/admin/users');
+
     }
 
     /**
@@ -59,7 +76,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=User::find($id);
+        return view('Admin.user.update',compact('user'));
+
     }
 
     /**
@@ -71,7 +90,24 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=User::find($id);
+        $data=$request->validate([
+            'name'=>'required|string|alpha',
+            'email'=>'required|email',
+            'firstname'=>'nullable|string|alpha',
+            'lastname'=>'nullable|string|alpha',
+            'mobile'=>'nullable|regex:/(09)[0-9]{9}/',
+            'gender'=>'nullable'
+        ]);
+        $user->update([
+            'name'=>$data['name'],
+            'email'=>$data['email'],
+            'firstname'=>$data['firstname'],
+            'lastname'=>$data['lastname'],
+            'mobile'=>$data['mobile'],
+            'gender'=>$data['gender']
+        ]);
+        return  redirect('/admin/users');
     }
 
     /**
@@ -82,6 +118,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect('/admin/users');
     }
 }
