@@ -19,7 +19,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::is('dashboard/orders') ? 'active' : '' }}" href="/dashboard/orders">سفارشات</a>
                                 </li>
-
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::is('dashboard/user') ? 'active' : '' }}" href="/dashboard/user">مشخصات</a>
+                                </li>
                                 <li class="nav-item">
                                     <form method="post" action="/logout">
                                         @csrf

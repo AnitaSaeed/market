@@ -24,6 +24,9 @@ Route::get('/dashboard', function () {
     return view('Client.profile');
 })->middleware(['auth'])->name('dashboard');
 Route::get('/dashboard/orders',[\App\Http\Controllers\Client\OrderController::class,'index']);
+Route::get('/dashboard/user',[\App\Http\Controllers\Client\UserController::class,'index']);
+Route::get('/dashboard/user/edit',[\App\Http\Controllers\Client\UserController::class,'edit']);
+Route::post('/dashboard/users/edit/{id}',[\App\Http\Controllers\Client\UserController::class,'update']);
 Route::post('/dashboard/orders/detail/{id}',[\App\Http\Controllers\Client\OrderController::class,'showDetail']);
 
 require __DIR__.'/auth.php';
