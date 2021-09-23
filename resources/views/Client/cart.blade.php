@@ -54,8 +54,8 @@
                                             </td>
                                             <td class="price-col">{{$product->price}}</td>
 
-                                            <td class="remove-col"><button class="btn-remove"><i
-                                                        class="icon-close"></i></button></td>
+                                            <td class="remove-col"><a class="btn-remove" href="/cart-list/delete/{{$product->id}}"><i
+                                                        class="icon-close"></i></a></td>
                                         </tr>
 
 

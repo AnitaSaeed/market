@@ -46,6 +46,7 @@ Route::post('/product/deleteImage/{id}',[\App\Http\Controllers\Admin\ProductCont
 Route::post('/delete/category/{product_id}/{category_id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteOldCat']);
 Route::get('/cart/{id}',[\App\Http\Controllers\Client\CartController::class,'addToCart']);
 Route::get('/cart-list',[\App\Http\Controllers\Client\CartController::class,'index']);
+Route::get('/cart-list/delete/{id}',[\App\Http\Controllers\Client\CartController::class,'deletefromCart']);
 Route::get('/order',[\App\Http\Controllers\Client\CartController::class,'createOrder']);
 
 Route::get('/category/{id}',[\App\Http\Controllers\Client\CategoryController::class,'index']);

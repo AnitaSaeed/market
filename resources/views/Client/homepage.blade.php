@@ -62,7 +62,7 @@
                                     </div><!-- End .intro-content -->
                                 </div><!-- End .intro-slide -->
                                 @endif
-                                @if(isset($categorise[2]))
+                                @if(isset($categories[2]))
                                      <div class="intro-slide">
                                     <figure class="slide-image">
                                         <picture>

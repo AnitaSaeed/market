@@ -8,6 +8,7 @@ use App\Models\OrderProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use MongoDB\Driver\Session;
 use mysql_xdevapi\Exception;
 
 class CartController extends Controller
@@ -30,6 +31,18 @@ class CartController extends Controller
        session(['cart'=>$cart]);
        return redirect()->back();
 
+
+    }
+    public function deletefromCart($id){
+        $cart = session('cart');
+        if($cart == null){
+            $cart = [];
+        }
+        $key = array_search($id, $cart);
+
+        unset($cart[$key]);
+        session(['cart'=>$cart]);
+        return redirect()->back();
 
     }
 
@@ -65,7 +78,7 @@ class CartController extends Controller
             ]);
         }
         session(['cart'=>[]]);
-        return Redirect::to('/dashboard')->withSuccess('شفارش شما با موفقیت ثبت شد. منتظر تایید ادمین باشید.');
+        return Redirect::to('/dashboard')->withSuccess('سفارش شما با موفقیت ثبت شد. منتظر تایید ادمین باشید. کد پیگیری:'.$order->tracking_code);
 
     }
 

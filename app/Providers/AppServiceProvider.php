@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         $categories=Category::where('active',1)->get();
+//        dd($categories[2]);
         view()->share('categories', $categories);
 
     }
